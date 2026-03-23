@@ -17,8 +17,8 @@ Example queries used:
 
 - Average of the total score of depression, social connectedness and acculturative stress which are rounded to two decimal places.
 - Counting of the number of international students for each length of stay.
-- Filtering the types of students to only show the results for international students
-- Grouping and sorting data by length of stay
+- Filtering the types of students to only show the results for international students.
+- Grouping and sorting data by length of stay.
 
 ## Example Query
 
@@ -29,7 +29,7 @@ GROUP BY stay
 ORDER BY stay DESC;
 
 ## Key Insights
-- Most students (95) in the dataset have shorter stay durations suggesting the dataset is skewed toward newer students
+- Most students (95) in the dataset have shorter stay durations suggesting the dataset is skewed toward newer students.
 - Certain groups show higher stress trends
 
 ## Tools Used
