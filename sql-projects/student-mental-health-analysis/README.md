@@ -29,8 +29,11 @@ GROUP BY stay
 ORDER BY stay DESC;
 
 ## Key Insights
-- Most students (95) in the dataset have shorter stay durations suggesting the dataset is skewed toward newer students.
-- Certain groups show higher stress trends
+
+- Most students are in early stay durations (1–3), indicating a skew toward newer students.
+- Depression (PHQ) scores show a slight increase with longer stay durations.
+- Social connectedness (SCS) levels remain relatively stable across all stay groups.
+- Acculturative stress (AS) appears higher among students with moderate stay durations.
 
 ## Tools Used
 - SQL (PostgreSQL)
