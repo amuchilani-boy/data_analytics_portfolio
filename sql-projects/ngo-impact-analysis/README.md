@@ -38,6 +38,57 @@ LIMIT 5;
 
 ### Key Insights
 - Certain assignments receive significantly higher funding than others.
-- Donation amounts vary depending on donor type (individual vs organization).
 - Some regions attract higher-value donations, indicating geographic differences in funding.
 - High donation value does not always mean highest impact, which requires further analysis.
+
+## Analysis 2: Top Regional Impact Assignments
+
+### Problem
+Identify the most impactful assignment in each region based on impact score, while also considering the number of donations received.
+
+### SQL Query
+
+```sql
+WITH assignment_stats AS (
+    SELECT 
+        a.assignment_name,
+        a.region,
+        a.impact_score,
+        COUNT(dn.donation_id) AS num_total_donations
+    FROM assignments AS a
+    JOIN donations dn
+        ON dn.assignment_id = a.assignment_id
+    GROUP BY 
+        a.assignment_name,
+        a.region,
+        a.impact_score
+),
+ranked_assignments AS (
+    SELECT *,
+        ROW_NUMBER() OVER (
+            PARTITION BY region
+            ORDER BY impact_score DESC, num_total_donations DESC
+        ) AS rank
+    FROM assignment_stats
+)
+SELECT 
+    assignment_name, 
+    region, 
+    impact_score, 
+    num_total_donations
+FROM ranked_assignments
+WHERE rank = 1
+ORDER BY region;
+```
+
+### Explanation
+- A Common Table Expression (CTE) is used to first calculate total donations per assignment.
+- The `ROW_NUMBER()` window function ranks assignments within each region.
+- Data is partitioned by region and sorted by impact score and number of donations.
+- The top-ranked assignment (rank = 1) is selected for each region.
+
+### Key Insights
+- Other assignments receive many donations but may not have the highest impact.
+- Regional differences show variation in both funding and project effectiveness.
+- Combining impact score with donation count provides a more balanced evaluation.
+
