@@ -92,3 +92,14 @@ ORDER BY region;
 - Regional differences show variation in both funding and project effectiveness.
 - Combining impact score with donation count provides a more balanced evaluation.
 
+## Overall Conclusion
+
+This project demonstrates the use of SQL for real-world data analysis, including aggregation, joins, and window functions.
+
+The analysis highlights how data can be used to:
+- Identify top-performing projects
+- Understand donation patterns
+- Compare impact across regions
+
+These insights can support better decision-making and resource allocation in non-profit organizations.
+
